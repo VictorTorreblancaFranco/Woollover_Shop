@@ -1,13 +1,18 @@
 /* src/App.css */
 
-/* Eliminar el scroll horizontal y hacerlo completamente invisible */
+/* Hacer que el desplazamiento entre las secciones sea suave */
+html {
+  scroll-behavior: smooth;
+  /* Desplazamiento suave */
+}
+
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   /* Elimina el scroll horizontal */
   overflow-y: scroll;
-  /* Permite el scroll vertical, pero sin mostrar la barra */
+  /* Permite el scroll vertical */
   background-color: #F1E4C3;
   /* Fondo para el body */
 }
@@ -15,7 +20,7 @@ body {
 /* Eliminar la barra de desplazamiento en navegadores basados en Webkit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   display: none;
-  /* Elimina el scroll completamente */
+  /* Elimina la barra de scroll completamente */
 }
 
 /* Eliminar la barra de desplazamiento en Firefox */
@@ -34,12 +39,6 @@ body {
   /* Estilo de scrollbar (para Firefox) */
   scrollbar-color: transparent transparent;
   /* Color del scrollbar (invisible) */
-}
-
-/* Chrome, Edge y Safari */
-.App::-webkit-scrollbar {
-  display: none;
-  /* Elimina la barra de scroll completamente */
 }
 
 /* Carrusel y otros contenedores no tendrán scroll visible */

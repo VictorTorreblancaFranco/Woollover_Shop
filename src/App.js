@@ -1,18 +1,17 @@
-// src/App.js
 import React from 'react';
-import Navbar from './Navbar';
-import Carrusel from './Carrusel';
-import Bienvenidos from './Bienvenidos';
-import Productos from './Productos';
-import Contacto from './Contacto';
-import Carrito from './Carrito';
+import Navbar from './Navbar';  // Barra de navegación
+import Carrusel from './Carrusel';  // Carrusel en la sección de Bienvenidos
+import Bienvenidos from './Bienvenidos';  // Sección Bienvenidos
+import Productos from './Productos';  // Sección Productos
+import Contacto from './Contacto';  // Sección Contacto
+import Carrito from './Carrito';  // Icono del carrito
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <div id="bienvenidos">
-        {/* Carrusel solo en la sección de Bienvenidos */}
+      {/* Carrusel en la sección de Bienvenidos */}
+      <div id="inicio">
         <Carrusel />
       </div>
 
@@ -20,13 +19,19 @@ function App() {
       <Navbar />
 
       {/* Sección de Bienvenidos */}
-      <Bienvenidos />
+      <div id="bienvenidos">
+        <Bienvenidos />
+      </div>
 
       {/* Sección de Productos */}
-      <Productos />
+      <div id="productos">
+        <Productos />
+      </div>
 
       {/* Sección de Contacto */}
-      <Contacto />
+      <div id="contacto">
+        <Contacto />
+      </div>
 
       {/* Carrito de compras como icono */}
       <Carrito />
