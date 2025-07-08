@@ -1,23 +1,33 @@
 /* src/Carrusel.css */
 .carrusel-container {
     width: 100%;
-    height: 97vh;
-    /* Ocupa solo el 60% de la altura de la pantalla */
-    position: relative;
-    /* Posiciona los elementos dentro */
+    height: 97vh; /* Ocupa el 97% de la altura de la pantalla */
+    position: relative; /* Posiciona los elementos dentro */
+    overflow-y: scroll; /* Permite el scroll vertical */
+    scrollbar-width: thin; /* Estilo de scrollbar para Firefox */
+    scrollbar-color: transparent transparent; /* Hace que la barra de desplazamiento sea invisible */
 }
 
+/* Eliminar la barra de desplazamiento en navegadores basados en Webkit */
+.carrusel-container::-webkit-scrollbar {
+    width: 0px; /* Hace que la barra de scroll sea invisible */
+    height: 0px; /* Hace que la barra de scroll sea invisible */
+}
+
+/* Asegura que las imágenes en el carrusel ocupen toda la altura */
 .carousel .slide {
     height: 100%;
     /* Asegura que las imágenes ocupen toda la altura del carrusel */
 }
 
+/* Asegura que las imágenes del carrusel se ajusten correctamente */
 .carousel img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* Centra la frase en el carrusel */
 .frase-container {
     position: absolute;
     top: 50%;
@@ -26,15 +36,16 @@
     /* Centra perfectamente */
     text-align: center;
     color: white;
-    z-index: 1;
-    /* Asegura que la frase esté por encima del carrusel */
+    z-index: 1; /* Asegura que la frase esté por encima del carrusel */
 }
 
+/* Estilos para el título de la frase */
 .frase-container h1 {
     font-size: 4rem;
     margin-bottom: 10px;
 }
 
+/* Estilos para el texto debajo de la frase */
 .frase-container p {
     font-size: 1.5rem;
 }

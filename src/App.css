@@ -1,43 +1,61 @@
 /* src/App.css */
 
-/* Ocultar el scroll horizontal y hacer el scroll vertical invisible */
+/* Eliminar el scroll horizontal y hacerlo completamente invisible */
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  /* Oculta el scroll horizontal */
+  /* Elimina el scroll horizontal */
   overflow-y: scroll;
-  /* Permite el scroll vertical */
+  /* Permite el scroll vertical, pero sin mostrar la barra */
+  background-color: #F1E4C3;
+  /* Fondo para el body */
 }
 
-/* Eliminar la barra de desplazamiento en navegadores basados en Webkit */
+/* Eliminar la barra de desplazamiento en navegadores basados en Webkit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 0px;
-  /* Elimina la barra de scroll horizontal */
-  height: 0px;
-  /* Elimina la barra de scroll vertical */
+  display: none;
+  /* Elimina el scroll completamente */
 }
 
-/* Permitir el scroll en la página */
+/* Eliminar la barra de desplazamiento en Firefox */
+body {
+  scrollbar-width: none;
+  /* Firefox: Elimina la barra de scroll */
+}
+
+/* Permitir el scroll en la página sin que se vea la barra */
 .App {
   height: 100vh;
   /* Establece el alto de la aplicación */
   overflow-y: scroll;
-  /* Habilita el scroll vertical sin mostrar la barra */
+  /* Permite el scroll vertical */
+  scrollbar-width: thin;
+  /* Estilo de scrollbar (para Firefox) */
+  scrollbar-color: transparent transparent;
+  /* Color del scrollbar (invisible) */
 }
 
-/* Si hay elementos adicionales de scroll que deseas ocultar (como un carrusel de fondo), */
+/* Chrome, Edge y Safari */
+.App::-webkit-scrollbar {
+  display: none;
+  /* Elimina la barra de scroll completamente */
+}
+
+/* Carrusel y otros contenedores no tendrán scroll visible */
 .carrusel-container {
   overflow: hidden;
-  /* El carrusel no tendrá scroll visible */
+  /* Asegura que no se vea la barra del carrusel */
 }
 
+/* Asegura que el contenido tenga suficiente espacio debajo del navbar */
 .content {
   padding: 20px;
   margin-top: 60px;
   /* Deja espacio debajo del navbar */
 }
 
+/* Asegura que las secciones tengan suficiente altura */
 .bienvenidos,
 .productos,
 .contacto,
@@ -48,6 +66,7 @@ body {
   /* Asegura que las secciones tengan suficiente altura */
 }
 
+/* Margen superior para cada sección */
 #bienvenidos,
 #productos,
 #contacto,

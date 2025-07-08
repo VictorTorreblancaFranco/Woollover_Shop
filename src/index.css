@@ -1,13 +1,33 @@
+/* Ocultar el scroll pero mantenerlo funcional en el body */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Eliminar el scroll horizontal */
+  overflow-x: hidden;
+  /* Esto desactiva el scroll horizontal */
+
+  /* Permitir el scroll vertical pero hacerlo invisible */
+  overflow-y: scroll;
+  /* Esto permite el scroll vertical */
+  scrollbar-width: thin;
+  /* Estilo del scrollbar (Firefox) */
+  scrollbar-color: transparent transparent;
+  /* Hace que el scroll sea invisible (Firefox) */
 }
 
+/* Eliminar la barra de desplazamiento en navegadores basados en Webkit */
+body::-webkit-scrollbar {
+  width: 0px;
+  /* Elimina la barra de scroll horizontal */
+  height: 0px;
+  /* Elimina la barra de scroll vertical */
+}
+
+/* Aseguramos que el código mantenga un estilo coherente */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

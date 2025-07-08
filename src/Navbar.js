@@ -7,9 +7,9 @@ function Navbar({ onCarritoClick, onLoginClick }) {
     return (
         <nav className="navbar">
             <ul className="navbar-left">
-                <li><a href="#bienvenidos">Bienvenidos</a></li>
+                <li><a href="#bienvenidos">Inicio</a></li>
                 <li><a href="#productos">Productos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#contacto">Contactanos</a></li>
             </ul>
 
             <ul className="navbar-right">

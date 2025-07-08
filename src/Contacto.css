@@ -2,6 +2,12 @@
 .contacto {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 50px;
+    overflow: hidden;
+    /* Elimina el scroll visible en este contenedor */
+    height: 100%;
+    /* Asegura que el contenedor no cause scroll por exceso de altura */
+    box-sizing: border-box;
+    /* Asegura que el padding no cause desbordamiento */
 }
 
 .contacto h2 {
