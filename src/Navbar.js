@@ -16,13 +16,13 @@ function Navbar({ onCarritoClick, onLoginClick }) {
                 {/* Icono de carrito */}
                 <li>
                     <a href="#carrito" className="carrito-icon" onClick={onCarritoClick}>
-                        <FaShoppingCart size={30} color="black" />
+                        <FaShoppingCart size={25} color="black" />
                     </a>
                 </li>
                 {/* Icono de inicio de sesión (aún sin función) */}
                 <li>
                     <a href="#login" className="login-icon" onClick={onLoginClick}>
-                        <FaUserCircle size={30} color="black" />
+                        <FaUserCircle size={25} color="black" />
                     </a>
                 </li>
             </ul>
