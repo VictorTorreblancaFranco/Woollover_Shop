@@ -1,0 +1,56 @@
+/* src/App.css */
+
+/* Ocultar el scroll horizontal y hacer el scroll vertical invisible */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Oculta el scroll horizontal */
+  overflow-y: scroll;
+  /* Permite el scroll vertical */
+}
+
+/* Eliminar la barra de desplazamiento en navegadores basados en Webkit */
+::-webkit-scrollbar {
+  width: 0px;
+  /* Elimina la barra de scroll horizontal */
+  height: 0px;
+  /* Elimina la barra de scroll vertical */
+}
+
+/* Permitir el scroll en la página */
+.App {
+  height: 100vh;
+  /* Establece el alto de la aplicación */
+  overflow-y: scroll;
+  /* Habilita el scroll vertical sin mostrar la barra */
+}
+
+/* Si hay elementos adicionales de scroll que deseas ocultar (como un carrusel de fondo), */
+.carrusel-container {
+  overflow: hidden;
+  /* El carrusel no tendrá scroll visible */
+}
+
+.content {
+  padding: 20px;
+  margin-top: 60px;
+  /* Deja espacio debajo del navbar */
+}
+
+.bienvenidos,
+.productos,
+.contacto,
+.carrito {
+  padding: 50px;
+  text-align: center;
+  min-height: 500px;
+  /* Asegura que las secciones tengan suficiente altura */
+}
+
+#bienvenidos,
+#productos,
+#contacto,
+#carrito {
+  margin-top: 20px;
+}

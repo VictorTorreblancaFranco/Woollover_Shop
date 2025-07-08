@@ -1,0 +1,164 @@
+/* src/Navbar.css */
+.navbar {
+    position: fixed;
+    /* Fija el navbar en la parte superior */
+    top: 0;
+    width: 100%;
+    background-color: #F1E4C3;
+    /* Beige suave */
+    padding: 15px 0;
+    z-index: 10;
+    /* Asegura que el navbar esté encima del contenido */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    border-bottom: 3px solid #C6A969;
+    /* Borde dorado */
+    border-radius: 10px 10px 0 0;
+    /* Bordes redondeados en la parte superior */
+    display: flex;
+    justify-content: space-between;
+    /* Coloca los elementos a los extremos */
+    align-items: center;
+    /* Centra los elementos verticalmente */
+    padding-left: 20px;
+    /* Añade espacio entre los elementos */
+    padding-right: 20px;
+    /* Añade espacio en la derecha */
+    box-sizing: border-box;
+    /* Asegura que todo se ajuste al contenedor */
+}
+
+.navbar-left {
+    display: flex;
+    justify-content: center;
+    /* Centra los enlaces en el navbar */
+    flex-grow: 1;
+    /* Hace que los enlaces ocupen todo el espacio disponible */
+}
+
+.navbar-left li {
+    margin: 0 20px;
+    /* Espacio entre los enlaces */
+    list-style: none;
+    /* Elimina los puntos */
+}
+
+.navbar-left li a {
+    color: #597E52;
+    /* Verde oliva suave */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: color 0.3s, background-color 0.3s;
+    text-transform: uppercase;
+    /* Mayúsculas para los enlaces */
+}
+
+.navbar-left li a:hover {
+    color: #FFFFEC;
+    /* Blanco cremoso */
+    background-color: #C6A969;
+    /* Fondo dorado suave */
+}
+
+/* Estilo para los iconos en la parte derecha */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    /* Centra los iconos verticalmente */
+    justify-content: flex-end;
+    /* Coloca los iconos al final (derecha) */
+}
+
+.navbar-right li {
+    margin-left: 20px;
+    /* Espacio entre los iconos */
+    list-style: none;
+    /* Elimina los puntos */
+}
+
+/* Estilos para el icono de carrito */
+.carrito-icon {
+    background-color: transparent;
+    /* Fondo transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    /* Eliminar efecto de hover */
+}
+
+/* Eliminar hover del icono del carrito */
+.carrito-icon:hover {
+    transform: none;
+    /* Elimina el aumento de tamaño */
+    background-color: transparent;
+    /* Elimina el fondo del hover */
+    border-radius: 50%;
+    /* Icono circular */
+}
+
+/* Estilos para el icono de inicio de sesión */
+.login-icon {
+    background-color: transparent;
+    /* Fondo transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    /* Eliminar efecto de hover */
+}
+
+/* Eliminar hover del icono de inicio de sesión */
+.login-icon:hover {
+    transform: none;
+    /* Elimina el aumento de tamaño */
+    background-color: transparent;
+    /* Elimina el fondo del hover */
+    border-radius: 50%;
+    /* Icono circular */
+}
+
+/* Scroll blanco (invisible) para la página */
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Elimina el scroll horizontal */
+    overflow-y: scroll;
+    /* Mantiene el scroll vertical */
+    background-color: #F1E4C3;
+    /* Fondo del body */
+}
+
+/* Asegura que el contenido de la página tenga un scroll vertical invisible */
+.App {
+    height: 100vh;
+    /* Establece el alto de la aplicación */
+    overflow-y: scroll;
+    /* Permite el scroll vertical dentro de la aplicación */
+    scrollbar-width: thin;
+    /* Estilo de scrollbar (Firefox) */
+    scrollbar-color: #fff #F1E4C3;
+    /* Color del scrollbar (blanco) */
+}
+
+/* Chrome, Edge y Safari */
+.App::-webkit-scrollbar {
+    width: 8px;
+    /* Ancho del scrollbar */
+}
+
+.App::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    /* Color del scrollbar */
+}
+
+.App::-webkit-scrollbar-track {
+    background-color: #F1E4C3;
+    /* Fondo del scrollbar */
+}

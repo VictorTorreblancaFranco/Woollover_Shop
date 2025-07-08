@@ -1,0 +1,32 @@
+/* src/Productos.css */
+.productos {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px;
+}
+
+.productos h2 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.productos-lista {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.producto img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.producto h3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.producto p {
+    color: #666;
+}
