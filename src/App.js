@@ -1,40 +1,34 @@
-import React from 'react';
-import Navbar from './Navbar';  // Barra de navegación
-import Carrusel from './Carrusel';  // Carrusel en la sección de Bienvenidos
-import Bienvenidos from './Bienvenidos';  // Sección Bienvenidos
-import Productos from './Productos';  // Sección Productos
-import Contacto from './Contacto';  // Sección Contacto
-import Carrito from './Carrito';  // Icono del carrito
+import React, { useState } from 'react';
+import Navbar from './Navbar';
+import Carrusel from './Carrusel';
+import Bienvenidos from './Bienvenidos';
+import Productos from './Productos';
+import Contacto from './Contacto';
+import Carrito from './Carrito';
 import './App.css';
 
 function App() {
+  const [mostrarCarrito, setMostrarCarrito] = useState(false);
+
   return (
     <div className="App">
-      {/* Carrusel en la sección de Bienvenidos */}
       <div id="inicio">
         <Carrusel />
       </div>
-
-      {/* Barra de navegación fija */}
-      <Navbar />
-
-      {/* Sección de Bienvenidos */}
+      <Navbar onAbrirCarrito={() => setMostrarCarrito(true)} />
       <div id="bienvenidos">
         <Bienvenidos />
       </div>
-
-      {/* Sección de Productos */}
       <div id="productos">
         <Productos />
       </div>
-
-      {/* Sección de Contacto */}
       <div id="contacto">
         <Contacto />
       </div>
-
-      {/* Carrito de compras como icono */}
-      <Carrito />
+      <Carrito
+        mostrarCarrito={mostrarCarrito}
+        onCerrar={() => setMostrarCarrito(false)}
+      />
     </div>
   );
 }

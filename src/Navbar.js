@@ -1,26 +1,27 @@
 import React from 'react';
-import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';  // Iconos de carrito e inicio de sesión
+import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({ onAbrirCarrito }) {
     return (
         <nav className="navbar">
             <ul className="navbar-left">
-                {/* Enlaces de navegación a las secciones con anclas */}
-                <li><a href="#inicio">Inicio</a></li>  {/* Enlace al carrusel */}
-                <li><a href="#bienvenidos">Bienvenidos</a></li>  {/* Enlace a la sección Bienvenidos */}
-                <li><a href="#productos">Productos</a></li>  {/* Enlace a la sección Productos */}
-                <li><a href="#contacto">Contactanos</a></li>  {/* Enlace a la sección Contacto */}
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#bienvenidos">Bienvenidos</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">Contactanos</a></li>
             </ul>
-
             <ul className="navbar-right">
-                {/* Icono de carrito */}
                 <li>
-                    <a href="#carrito" className="carrito-icon">
+                    <button
+                        className="carrito-icon"
+                        onClick={onAbrirCarrito}
+                        style={{ background: 'none', border: 'none', padding: 0 }}
+                        aria-label="Abrir carrito"
+                    >
                         <FaShoppingCart size={25} color="black" />
-                    </a>
+                    </button>
                 </li>
-                {/* Icono de inicio de sesión */}
                 <li>
                     <a href="#login" className="login-icon">
                         <FaUserCircle size={25} color="black" />
