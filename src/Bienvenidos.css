@@ -1,22 +1,70 @@
 /* src/Bienvenidos.css */
 .bienvenidos {
-    background-color: rgba(255, 255, 255, 0.8);
-    /* Fondo semi-transparente */
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 50px;
-    overflow: hidden;
-    /* Elimina el scroll visible en este contenedor */
-    height: 100vh;
-    /* Asegura que el contenedor no cause scroll por exceso de altura */
     box-sizing: border-box;
-    /* Asegura que el padding no cause desbordamiento */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #F1E4C3; /* Fondo suave */
+    overflow: hidden;
+    /* Elimina cualquier scroll no deseado */
+    min-height: 100vh; /* Se asegura que ocupe al menos la altura de la pantalla */
 }
 
-.bienvenidos h1 {
-    font-size: 3rem;
+.historia, .proceso, .galeria, .cta {
+    margin-top: 30px;
+    max-width: 800px;
+    font-size: 1.2rem;
     color: #333;
 }
 
-.bienvenidos p {
-    font-size: 1.5rem;
-    color: #666;
+.historia h2, .proceso h2, .cta h2 {
+    font-size: 2rem;
+    color: #C6A969;
+    margin-bottom: 15px;
+}
+
+.galeria {
+    margin-top: 30px;
+}
+
+.galeria h2 {
+    font-size: 2rem;
+    color: #C6A969;
+    margin-bottom: 15px;
+}
+
+.galeria .imagenes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.galeria .imagenes img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.cta {
+    margin-top: 30px;
+}
+
+.cta button {
+    background-color: #C6A969;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta button:hover {
+    background-color: #597E52;
 }
