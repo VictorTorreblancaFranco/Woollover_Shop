@@ -163,3 +163,55 @@ body {
     background-color: #F1E4C3;
     /* Fondo del scrollbar */
 }
+
+
+/* src/Navbar.css */
+.carrito-icon {
+    background-color: transparent;
+    /* Fondo transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    /* Efecto de transición */
+    position: relative;
+    /* Asegura que el contador se posicione correctamente */
+}
+
+/* Hover en el icono del carrito */
+.carrito-icon:hover {
+    transform: scale(1.2);
+    /* Agranda el icono al pasar el mouse */
+    background-color: transparent;
+    /* Elimina el fondo del hover */
+    border-radius: 50%;
+    /* Icono circular */
+}
+
+/* Estilo para la cantidad de productos en el carrito */
+.carrito-cantidad {
+    position: absolute;
+    top: -6px;
+    /* Ajusta la posición hacia arriba */
+    right: -6px;
+    /* Ajusta la posición hacia la derecha */
+    background-color: #C6A969;
+    /* Fondo dorado */
+    color: white;
+    font-size: 0.9rem;
+    /* Tamaño de la fuente más pequeño */
+    font-weight: bold;
+    border-radius: 50%;
+    width: 18px;
+    /* Tamaño más pequeño del círculo */
+    height: 18px;
+    /* Tamaño más pequeño del círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    /* Un poco de padding para centrar el número */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    /* Sombra suave */
+}

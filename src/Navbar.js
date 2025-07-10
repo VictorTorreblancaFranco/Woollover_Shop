@@ -2,7 +2,7 @@ import React from 'react';
 import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 import './Navbar.css';
 
-function Navbar({ onAbrirCarrito }) {
+function Navbar({ onAbrirCarrito, cantidad }) {
     return (
         <nav className="navbar">
             <ul className="navbar-left">
@@ -20,6 +20,7 @@ function Navbar({ onAbrirCarrito }) {
                         aria-label="Abrir carrito"
                     >
                         <FaShoppingCart size={25} color="black" />
+                        {cantidad > 0 && <span className="carrito-cantidad">{cantidad}</span>} {/* Muestra la cantidad */}
                     </button>
                 </li>
                 <li>

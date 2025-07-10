@@ -1,20 +1,23 @@
-// src/Productos.js
 import React from 'react';
 import './Productos.css';
 
-function Productos() {
+function Productos({ addToCart }) {
+    const productos = [
+        { nombre: 'Amigurumi 1', precio: 10 },
+        { nombre: 'Amigurumi 2', precio: 12 },
+    ];
+
     return (
-        <div className="productos" id="productos"> {/* Añadimos el id para navegación */}
+        <div className="productos" id="productos">
             <h2>Productos Disponibles</h2>
             <div className="productos-lista">
-                <div className="producto">
-                    <h3>Amigurumi 1</h3>
-                    <p>$10</p>
-                </div>
-                <div className="producto">
-                    <h3>Amigurumi 2</h3>
-                    <p>$12</p>
-                </div>
+                {productos.map((producto, index) => (
+                    <div className="producto" key={index}>
+                        <h3>{producto.nombre}</h3>
+                        <p>${producto.precio}</p>
+                        <button onClick={() => addToCart(producto)}>Añadir al carrito</button>
+                    </div>
+                ))}
             </div>
         </div>
     );
