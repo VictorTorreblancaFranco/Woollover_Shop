@@ -3,6 +3,15 @@ import { FaShoppingCart } from 'react-icons/fa';
 import './Productos.css';
 
 function Productos({ addToCart }) {
+    // Función para formatear precios en Soles Peruanos
+    const formatPrice = (price) => {
+        return new Intl.NumberFormat('es-PE', {
+            style: 'currency',
+            currency: 'PEN',
+            minimumFractionDigits: 2
+        }).format(price).replace('PEN', 'S/');
+    };
+
     const productos = [
         {
             nombre: "Amigurumi 1",
@@ -11,13 +20,46 @@ function Productos({ addToCart }) {
             disponible: true,
             imagen: "images/productos/ami1.jpg",
         },
-        // ...agrega más productos aquí...
+        {
+            nombre: "Amigurumi 2",
+            precio: 15,
+            descripcion: "Amigurumi de diseño exclusivo, ideal para regalo.",
+            disponible: true,
+            imagen: "images/productos/ami2.jpg",
+        },
+        {
+            nombre: "Amigurumi 3",
+            precio: 20,
+            descripcion: "Amigurumi con detalles únicos, hecho con amor.",
+            disponible: false,
+            imagen: "images/productos/ami3.jpg",
+        },
+        {
+            nombre: "Amigurumi 4",
+            precio: 12,
+            descripcion: "Amigurumi colorido, perfecto para decorar tu hogar.",
+            disponible: true,
+            imagen: "images/productos/ami4.jpg",
+        },
+        {
+            nombre: "Amigurumi 5",
+            precio: 18,
+            descripcion: "Amigurumi suave y tierno, ideal para niños.",
+            disponible: true,
+            imagen: "images/productos/ami5.jpg",
+        },
+        {
+            nombre: "Amigurumi 6",
+            precio: 10,
+            descripcion: "Amigurumi hecho a mano, con lana de alta calidad.",
+            disponible: true,
+            imagen: "images/productos/ami6.jpg",
+        },
     ];
 
     const [modal, setModal] = useState({ abierto: false, producto: null, cantidad: 1 });
 
     const abrirModal = (producto) => {
-        // Limpiamos cualquier cantidad previa al abrir el modal
         setModal({ abierto: true, producto, cantidad: 1 });
     };
 
@@ -31,7 +73,6 @@ function Productos({ addToCart }) {
     };
 
     const handleAddToCart = () => {
-        // Creamos un nuevo objeto sin la propiedad cantidad del producto original
         const { cantidad, ...productoSinCantidad } = modal.producto;
         addToCart({
             ...productoSinCantidad,
@@ -48,7 +89,7 @@ function Productos({ addToCart }) {
                     <div className="producto" key={index} onClick={() => abrirModal(producto)}>
                         <img src={producto.imagen} alt={producto.nombre} className="producto-imagen" />
                         <h3>{producto.nombre}</h3>
-                        <p>${producto.precio}</p>
+                        <p>{formatPrice(producto.precio)}</p>
                     </div>
                 ))}
             </div>
@@ -61,7 +102,7 @@ function Productos({ addToCart }) {
                         </div>
                         <div className="modal-info-side">
                             <h3>{modal.producto.nombre}</h3>
-                            <p className="modal-precio">${modal.producto.precio}</p>
+                            <p className="modal-precio">{formatPrice(modal.producto.precio)}</p>
                             <p className="modal-descripcion">{modal.producto.descripcion}</p>
                             <div style={{ margin: '10px 0' }}>
                                 <label>

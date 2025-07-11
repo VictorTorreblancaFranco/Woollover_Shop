@@ -10,11 +10,31 @@
     margin-bottom: 30px;
 }
 
+/* Hasta 4 productos por fila, responsive */
 .productos-lista {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    flex-wrap: wrap;
+    justify-items: center;
+    align-items: stretch;
+}
+
+@media (max-width: 1200px) {
+    .productos-lista {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .productos-lista {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .productos-lista {
+        grid-template-columns: 1fr;
+    }
 }
 
 .producto {
@@ -89,9 +109,10 @@
     background: #fff;
     border-radius: 14px;
     width: 95vw;
-    max-width: 600px;
-    min-width: 320px;
-    max-height: 85vh;
+    max-width: 400px;
+    min-width: 280px;
+    max-height: 320px;
+    /* Menor altura */
     overflow-y: auto;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
     position: relative;
@@ -99,8 +120,8 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
-    padding: 32px 24px;
-    gap: 32px;
+    padding: 24px 18px;
+    gap: 24px;
     animation: modalPop 0.25s;
 }
 
@@ -120,13 +141,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 180px;
-    max-width: 220px;
+    min-width: 140px;
+    max-width: 180px;
 }
 
 .modal-img-side .producto-imagen {
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
     object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(198, 169, 105, 0.10);
@@ -226,11 +247,12 @@
         max-width: 98vw;
         gap: 16px;
         padding: 16px 4vw;
+        max-height: 380px;
     }
 
     .modal-img-side .producto-imagen {
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 120px;
     }
 
     .modal-info-side {
@@ -243,6 +265,7 @@
     .modal-content {
         max-width: 98vw;
         padding: 12px 2vw 12px 2vw;
+        max-height: 320px;
     }
 
     .producto {
