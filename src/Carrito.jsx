@@ -2,7 +2,8 @@ import React from 'react';
 import './Carrito.css';
 
 function Carrito({ mostrarCarrito, onCerrar, productos }) {
-    const total = productos.reduce((acc, producto) => acc + producto.precio, 0);
+    // Calcula el total sumando precio * cantidad
+    const total = productos.reduce((acc, producto) => acc + producto.precio * (producto.cantidad || 1), 0);
 
     if (!mostrarCarrito) return null;
 
@@ -16,7 +17,9 @@ function Carrito({ mostrarCarrito, onCerrar, productos }) {
                         <li>No hay productos en el carrito.</li>
                     ) : (
                         productos.map((producto, index) => (
-                            <li key={index}>{producto.nombre} - ${producto.precio}</li>
+                            <li key={index}>
+                                {producto.nombre} - ${producto.precio} x {producto.cantidad || 1}
+                            </li>
                         ))
                     )}
                 </ul>

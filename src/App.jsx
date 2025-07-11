@@ -1,65 +1,60 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar'; // Barra de navegación
-import Carrusel from './Carrusel'; // Carrusel en la sección de Bienvenidos
-import Bienvenidos from './Bienvenidos'; // Sección Bienvenidos
-import Productos from './Productos'; // Sección Productos
-import Contacto from './Contacto'; // Sección Contacto
-import Carrito from './Carrito'; // Icono del carrito
+import Navbar from './Navbar';
+import Carrusel from './Carrusel';
+import Bienvenidos from './Bienvenidos';
+import Productos from './Productos';
+import Contacto from './Contacto';
+import Carrito from './Carrito';
 import './App.css';
 
 function App() {
-  // Estado para controlar si el carrito se muestra o no
   const [mostrarCarrito, setMostrarCarrito] = useState(false);
   const [productos, setProductos] = useState([]); // Lista de productos en el carrito
 
-  // Función para abrir el carrito
-  const abrirCarrito = () => {
-    setMostrarCarrito(true);
-  };
+  const abrirCarrito = () => setMostrarCarrito(true);
+  const cerrarCarrito = () => setMostrarCarrito(false);
 
-  // Función para cerrar el carrito
-  const cerrarCarrito = () => {
-    setMostrarCarrito(false);
-  };
-
-  // Función para añadir productos al carrito
+  // Añade productos al carrito, sumando cantidad si ya existe
   const addToCart = (producto) => {
-    setProductos([...productos, producto]);
+    setProductos(prev => {
+      const existente = prev.find(p => p.nombre === producto.nombre);
+      if (existente) {
+        return prev.map(p =>
+          p.nombre === producto.nombre
+            ? { ...p, cantidad: p.cantidad + producto.cantidad }
+            : p
+        );
+      } else {
+        return [...prev, { ...producto }];
+      }
+    });
   };
+
+  // Suma total de productos en el carrito (para mostrar en el icono)
+  const totalCantidad = productos.reduce((acc, p) => acc + (p.cantidad || 1), 0);
 
   return (
     <div className="App">
-      {/* Carrusel en la sección de Bienvenidos */}
       <div id="inicio">
         <Carrusel />
       </div>
-
-      {/* Barra de navegación fija */}
       <Navbar
-        onAbrirCarrito={abrirCarrito} // Pasa la función para abrir el carrito
-        cantidad={productos.length} // Pasa la cantidad de productos al Navbar
+        onAbrirCarrito={abrirCarrito}
+        cantidad={totalCantidad}
       />
-
-      {/* Sección de Bienvenidos */}
       <div id="bienvenidos">
         <Bienvenidos />
       </div>
-
-      {/* Sección de Productos */}
       <div id="productos">
-        <Productos addToCart={addToCart} /> {/* Pasa la función addToCart a los productos */}
+        <Productos addToCart={addToCart} />
       </div>
-
-      {/* Sección de Contacto */}
       <div id="contacto">
         <Contacto />
       </div>
-
-      {/* Carrito de compras */}
       <Carrito
         mostrarCarrito={mostrarCarrito}
         onCerrar={cerrarCarrito}
-        productos={productos} // Pasa los productos al componente Carrito
+        productos={productos}
       />
     </div>
   );
