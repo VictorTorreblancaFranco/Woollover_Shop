@@ -26,10 +26,11 @@
 .carrito-modal {
     background: #23272f;
     color: #fff;
-    padding: 40px 32px 28px 32px;
+    padding: 40px 32px 28px;
     border-radius: 18px;
-    min-width: 340px;
-    max-width: 95vw;
+    width: 90%;
+    max-width: 600px;
+    /* Aumentado de 400px a 600px */
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(198, 169, 105, 0.15);
     position: relative;
     text-align: center;
@@ -63,10 +64,10 @@
     line-height: 38px;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    transition: background 0.2s, color 0.2s, transform 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
 .carrito-cerrar:hover {
@@ -82,26 +83,58 @@
     color: #C6A969;
 }
 
-.carrito-modal ul {
+.carrito-lista {
     list-style: none;
     padding: 0;
-    margin: 24px 0 0 0;
+    margin: 24px 0 0;
+    text-align: left;
 }
 
-.carrito-modal ul li {
-    font-size: 1.15rem;
-    margin-bottom: 12px;
+.sin-productos {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.producto-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
     border-bottom: 1px solid #444;
-    padding-bottom: 8px;
 }
 
-.carrito-modal h3 {
+.producto-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.producto-nombre {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.producto-cantidad {
+    font-size: 0.95rem;
+    color: #bbb;
+    margin-top: 4px;
+}
+
+.producto-total {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.total-carrito {
+    display: flex;
+    justify-content: space-between;
     font-size: 1.3rem;
-    margin: 28px 0 0 0;
-    color: #C6A969;
+    font-weight: bold;
+    margin-top: 28px;
+    border-top: 1px solid #444;
+    padding-top: 16px;
 }
 
-.carrito-modal button:not(.carrito-cerrar) {
+.finalizar-compra-btn {
     margin-top: 24px;
     padding: 12px 28px;
     background-color: #C6A969;
@@ -111,12 +144,11 @@
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
+    transition: background 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
 }
 
-.carrito-modal button:not(.carrito-cerrar):hover {
+.finalizar-compra-btn:hover {
     background-color: #FFD700;
-    color: #23272f;
     transform: translateY(-2px) scale(1.04);
 }

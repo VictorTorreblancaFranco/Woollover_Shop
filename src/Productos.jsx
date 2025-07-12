@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+// src/Productos.jsx
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { FaShoppingCart } from 'react-icons/fa';
 import './Productos.css';
 
 function Productos({ addToCart }) {
+    const [productos, setProductos] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     // Función para formatear precios en Soles Peruanos
     const formatPrice = (price) => {
         return new Intl.NumberFormat('es-PE', {
@@ -12,50 +17,28 @@ function Productos({ addToCart }) {
         }).format(price).replace('PEN', 'S/');
     };
 
-    const productos = [
-        {
-            nombre: "Amigurumi 1",
-            precio: 10,
-            descripcion: "Amigurumi hecho a mano, con lana de alta calidad.",
-            disponible: true,
-            imagen: "images/productos/ami1.jpg",
-        },
-        {
-            nombre: "Amigurumi 2",
-            precio: 15,
-            descripcion: "Amigurumi de diseño exclusivo, ideal para regalo.",
-            disponible: true,
-            imagen: "images/productos/ami2.jpg",
-        },
-        {
-            nombre: "Amigurumi 3",
-            precio: 20,
-            descripcion: "Amigurumi con detalles únicos, hecho con amor.",
-            disponible: false,
-            imagen: "images/productos/ami3.jpg",
-        },
-        {
-            nombre: "Amigurumi 4",
-            precio: 12,
-            descripcion: "Amigurumi colorido, perfecto para decorar tu hogar.",
-            disponible: true,
-            imagen: "images/productos/ami4.jpg",
-        },
-        {
-            nombre: "Amigurumi 5",
-            precio: 18,
-            descripcion: "Amigurumi suave y tierno, ideal para niños.",
-            disponible: true,
-            imagen: "images/productos/ami5.jpg",
-        },
-        {
-            nombre: "Amigurumi 6",
-            precio: 10,
-            descripcion: "Amigurumi hecho a mano, con lana de alta calidad.",
-            disponible: true,
-            imagen: "images/productos/ami6.jpg",
-        },
-    ];
+    // Función para obtener los productos desde el backend
+    const fetchProducts = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/products');
+
+            // Mapear los productos y asignarles el campo `available` basado en `status`
+            const productosConDisponibilidad = response.data.map(producto => ({
+                ...producto,
+                available: producto.status === 'D' // Solo 'D' significa disponible
+            }));
+
+            setProductos(productosConDisponibilidad); // Actualizamos el estado con los productos obtenidos
+        } catch (error) {
+            console.error("Error al obtener los productos", error);
+        } finally {
+            setLoading(false); // Dejar de mostrar el cargando
+        }
+    };
+
+    useEffect(() => {
+        fetchProducts(); // Llamamos a la función para obtener los productos cuando el componente se monta
+    }, []);
 
     const [modal, setModal] = useState({ abierto: false, producto: null, cantidad: 1 });
 
@@ -84,26 +67,34 @@ function Productos({ addToCart }) {
     return (
         <div className="productos" id="productos">
             <h2>Productos Disponibles</h2>
-            <div className="productos-lista">
-                {productos.map((producto, index) => (
-                    <div className="producto" key={index} onClick={() => abrirModal(producto)}>
-                        <img src={producto.imagen} alt={producto.nombre} className="producto-imagen" />
-                        <h3>{producto.nombre}</h3>
-                        <p>{formatPrice(producto.precio)}</p>
-                    </div>
-                ))}
-            </div>
+            {loading ? (
+                <p>Cargando productos...</p> // Mostrar mensaje mientras se cargan los productos
+            ) : (
+                <div className="productos-lista">
+                    {productos.map((producto, index) => (
+                        <div className="producto" key={index} onClick={() => abrirModal(producto)}>
+                            <img src={producto.image} alt={producto.name} className="producto-imagen" />
+                            <h3>{producto.name}</h3>
+                            <p>{formatPrice(producto.price)}</p>
+                            <button className="add-to-cart-btn" disabled={!producto.available}>
+                                <FaShoppingCart size={18} /> Añadir al carrito
+                            </button>
+                            {!producto.available && <p className="no-disponible">No disponible</p>}
+                        </div>
+                    ))}
+                </div>
+            )}
 
             {modal.abierto && (
                 <div className="modal" onClick={cerrarModal}>
-                    <div className="modal-content modal-row" onClick={e => e.stopPropagation()}>
+                    <div className="modal-content modal-row" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-img-side">
-                            <img src={modal.producto.imagen} alt={modal.producto.nombre} className="producto-imagen" />
+                            <img src={modal.producto.image} alt={modal.producto.name} className="producto-imagen" />
                         </div>
                         <div className="modal-info-side">
-                            <h3>{modal.producto.nombre}</h3>
-                            <p className="modal-precio">{formatPrice(modal.producto.precio)}</p>
-                            <p className="modal-descripcion">{modal.producto.descripcion}</p>
+                            <h3>{modal.producto.name}</h3>
+                            <p className="modal-precio">{formatPrice(modal.producto.price)}</p>
+                            <p className="modal-descripcion">{modal.producto.description}</p>
                             <div style={{ margin: '10px 0' }}>
                                 <label>
                                     Cantidad:&nbsp;
@@ -121,11 +112,11 @@ function Productos({ addToCart }) {
                                 onClick={handleAddToCart}
                                 className="add-to-cart-btn"
                                 style={{ marginTop: 10 }}
-                                disabled={!modal.producto.disponible}
+                                disabled={!modal.producto.available}
                             >
                                 <FaShoppingCart size={18} /> Añadir al carrito
                             </button>
-                            {!modal.producto.disponible && (
+                            {!modal.producto.available && (
                                 <p className="no-disponible">No disponible</p>
                             )}
                             <button onClick={cerrarModal} className="cerrar-modal-btn" style={{ marginTop: 15 }}>Cerrar</button>
