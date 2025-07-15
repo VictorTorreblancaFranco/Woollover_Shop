@@ -1,0 +1,144 @@
+/* Backdrop */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal */
+.modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 32px;
+    width: 100%;
+    max-width: 420px;
+    min-height: 520px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+    animation: fadeInScale 0.25s ease-out;
+    box-sizing: border-box;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.auth-form h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.auth-form label {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-bottom: 6px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border: 1.2px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #111827;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-form input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+    outline: none;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 14px;
+    background-color: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.auth-form button:hover {
+    background-color: #1d4ed8;
+}
+
+.auth-form button:active {
+    transform: scale(0.98);
+}
+
+.error {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.toggle-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.toggle-link .link {
+    color: #2563eb;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.toggle-link .link:hover {
+    color: #1d4ed8;
+}
+
+/* Mobile tweaks */
+@media (max-width: 380px) {
+    .modal-content {
+        padding: 28px 16px;
+        max-width: 95%;
+        min-height: 480px;
+    }
+
+    .auth-form h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+}
